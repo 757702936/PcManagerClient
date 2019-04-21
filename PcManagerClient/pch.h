@@ -10,5 +10,11 @@
 // 添加要在此处预编译的标头
 #include "framework.h"
 #include <afxcmn.h>
+#include <afxcontrolbars.h>
+#include <afxcontrolbars.h>
+#include <afxcontrolbars.h>
+#include <afxcontrolbars.h>
+#include <afxcontrolbars.h>
+#include <afxcontrolbars.h>
 
 #endif //PCH_H

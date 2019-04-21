@@ -187,7 +187,13 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CCleaner.h" />
+    <ClInclude Include="CFileInfo.h" />
+    <ClInclude Include="CKillVirus.h" />
+    <ClInclude Include="CProcessInfo.h" />
+    <ClInclude Include="CSoftwareManager.h" />
     <ClInclude Include="CTabMainInterface.h" />
+    <ClInclude Include="CTools.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PcManagerClient.h" />
@@ -196,7 +202,13 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CCleaner.cpp" />
+    <ClCompile Include="CFileInfo.cpp" />
+    <ClCompile Include="CKillVirus.cpp" />
+    <ClCompile Include="CProcessInfo.cpp" />
+    <ClCompile Include="CSoftwareManager.cpp" />
     <ClCompile Include="CTabMainInterface.cpp" />
+    <ClCompile Include="CTools.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

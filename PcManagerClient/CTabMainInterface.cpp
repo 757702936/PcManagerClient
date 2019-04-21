@@ -4,6 +4,12 @@
 #include "pch.h"
 #include "PcManagerClient.h"
 #include "CTabMainInterface.h"
+#include "CKillVirus.h"
+#include "CCleaner.h"
+#include "CProcessInfo.h"
+#include "CFileInfo.h"
+#include "CSoftwareManager.h"
+#include "CTools.h"
 
 
 // CTabMainInterface
@@ -34,7 +40,7 @@ void CTabMainInterface::InsertMainInterfaceItems(WORD count, ...)
 }
 
 // 插入对话框，可变参函数
-void CTabMainInterface::InsertMainInterfaceDlg(WORD count, ...)
+void CTabMainInterface::InsertMainInterfaceDlgs(WORD count, ...)
 {
 	va_list dlg;
 	va_start(dlg, count);
@@ -51,7 +57,30 @@ void CTabMainInterface::InsertMainInterfaceDlg(WORD count, ...)
 // 初始化tab控件
 void CTabMainInterface::InitTabMainInterface()
 {
-	//InsertMainInterfaceItems();
+	// 初始化标题
+	InsertMainInterfaceItems(
+		6
+		, _T("杀毒")
+		, _T("垃圾清理")
+		, _T("进程管理")
+		, _T("文件管理")
+		, _T("软件管理")
+		, _T("小工具")
+	);
+
+	// 创建相应对话框
+	InsertMainInterfaceDlgs(
+		6
+		, new CKillVirus, IDD_KILL_VIRUS_DLG
+		, new CCleaner, IDD_CCLEANER_DLG
+		, new CProcessInfo, IDD_PROCESS_DLG
+		, new CFileInfo, IDD_FILE_DLG
+		, new CSoftwareManager, IDD_SOFTWARE_DLG
+		, new CTools, IDD_TOOLS_DLG
+	);
+	
+	// 默认显示第一个选项
+	ShowTabDlg(0);
 }
 
 // 显示TAB控件里的对话框
@@ -59,7 +88,7 @@ void CTabMainInterface::ShowTabDlg(WORD nIndex)
 {
 	CRect rt;
 	this->GetClientRect(rt);
-	rt.DeflateRect(0, 30, 0, 0);
+	rt.DeflateRect(14, 155, -11, -125);
 	for (WORD i = 0; i < m_pDlg.size(); ++i)
 	{
 		if (nIndex == i)

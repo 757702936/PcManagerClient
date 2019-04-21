@@ -36,6 +36,24 @@
     <ClInclude Include="CTabMainInterface.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="CCleaner.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CFileInfo.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CKillVirus.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CProcessInfo.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CSoftwareManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CTools.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PcManagerClient.cpp">
@@ -48,6 +66,24 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="CTabMainInterface.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CCleaner.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CFileInfo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CKillVirus.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CProcessInfo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CSoftwareManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CTools.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

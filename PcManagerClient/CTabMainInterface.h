@@ -22,7 +22,7 @@ public:
 	// 插入标题，可变参函数
 	void InsertMainInterfaceItems(WORD count, ...);
 	// 插入对话框，可变参函数
-	void InsertMainInterfaceDlg(WORD count, ...);
+	void InsertMainInterfaceDlgs(WORD count, ...);
 	// 初始化tab控件
 	void InitTabMainInterface();
 	// 显示TAB控件里的对话框
