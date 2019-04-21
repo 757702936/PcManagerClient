@@ -5,7 +5,7 @@
 #include "pch.h"
 #include "framework.h"
 #include "PcManagerClient.h"
-#include "PcManagerClientDlg.h"
+#include "CMainInterface.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -71,7 +71,7 @@ BOOL CPcManagerApp::InitInstance()
 	// 例如修改为公司或组织名
 	SetRegistryKey(_T("应用程序向导生成的本地应用程序"));
 
-	CPcManagerClientDlg dlg;
+	CMainInterface dlg;
 	m_pMainWnd = &dlg;
 	INT_PTR nResponse = dlg.DoModal();
 	if (nResponse == IDOK)

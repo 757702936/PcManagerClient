@@ -3,18 +3,18 @@
 //
 
 #pragma once
+#include "CTabMainInterface.h"
 
-
-// CPcManagerClientDlg 对话框
-class CPcManagerClientDlg : public CDialogEx
+// CMainInterface 对话框
+class CMainInterface : public CDialogEx
 {
 // 构造
 public:
-	CPcManagerClientDlg(CWnd* pParent = nullptr);	// 标准构造函数
+	CMainInterface(CWnd* pParent = nullptr);	// 标准构造函数
 
 // 对话框数据
 #ifdef AFX_DESIGN_TIME
-	enum { IDD = IDD_PCMANAGERCLIENT_DIALOG };
+	enum { IDD = IDD_MAIN_INTERFACE_DLG };
 #endif
 
 	protected:
@@ -30,4 +30,7 @@ protected:
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
+public:
+	// 主界面TAB控件
+	CTabMainInterface m_tabMainInterface;
 };

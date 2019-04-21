@@ -187,14 +187,16 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CTabMainInterface.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PcManagerClient.h" />
-    <ClInclude Include="PcManagerClientDlg.h" />
+    <ClInclude Include="CMainInterface.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CTabMainInterface.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -202,7 +204,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="PcManagerClient.cpp" />
-    <ClCompile Include="PcManagerClientDlg.cpp" />
+    <ClCompile Include="CMainInterface.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="PcManagerClient.rc" />

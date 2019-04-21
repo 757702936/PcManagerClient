@@ -1,11 +1,11 @@
 ﻿
-// PcManagerClientDlg.cpp: 实现文件
+// CMainInterface.cpp: 实现文件
 //
 
 #include "pch.h"
 #include "framework.h"
 #include "PcManagerClient.h"
-#include "PcManagerClientDlg.h"
+#include "CMainInterface.h"
 #include "afxdialogex.h"
 
 #ifdef _DEBUG
@@ -13,30 +13,31 @@
 #endif
 
 
-// CPcManagerClientDlg 对话框
+// CMainInterface 对话框
 
 
 
-CPcManagerClientDlg::CPcManagerClientDlg(CWnd* pParent /*=nullptr*/)
-	: CDialogEx(IDD_PCMANAGERCLIENT_DIALOG, pParent)
+CMainInterface::CMainInterface(CWnd* pParent /*=nullptr*/)
+	: CDialogEx(IDD_MAIN_INTERFACE_DLG, pParent)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
 
-void CPcManagerClientDlg::DoDataExchange(CDataExchange* pDX)
+void CMainInterface::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_TAB_MAIN_INTERFACE, m_tabMainInterface);
 }
 
-BEGIN_MESSAGE_MAP(CPcManagerClientDlg, CDialogEx)
+BEGIN_MESSAGE_MAP(CMainInterface, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 END_MESSAGE_MAP()
 
 
-// CPcManagerClientDlg 消息处理程序
+// CMainInterface 消息处理程序
 
-BOOL CPcManagerClientDlg::OnInitDialog()
+BOOL CMainInterface::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
 
@@ -54,7 +55,7 @@ BOOL CPcManagerClientDlg::OnInitDialog()
 //  来绘制该图标。  对于使用文档/视图模型的 MFC 应用程序，
 //  这将由框架自动完成。
 
-void CPcManagerClientDlg::OnPaint()
+void CMainInterface::OnPaint()
 {
 	if (IsIconic())
 	{
@@ -81,7 +82,7 @@ void CPcManagerClientDlg::OnPaint()
 
 //当用户拖动最小化窗口时系统调用此函数取得光标
 //显示。
-HCURSOR CPcManagerClientDlg::OnQueryDragIcon()
+HCURSOR CMainInterface::OnQueryDragIcon()
 {
 	return static_cast<HCURSOR>(m_hIcon);
 }
