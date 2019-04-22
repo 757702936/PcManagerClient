@@ -143,7 +143,9 @@ void CPeImportTable::ShowImportModuleInfo()
 // 显示模块里的函数信息
 void CPeImportTable::ShowImportFunOfModuleInfo(int nModuleIndex)
 {
+	// 清空列表内容
 	m_listFunOfModuleInfo.DeleteAllItems();
+
 	PIMAGE_IMPORT_DESCRIPTOR pTemp = m_pImport;
 	for (int i = 0; pTemp->Name != NULL; ++i)
 	{

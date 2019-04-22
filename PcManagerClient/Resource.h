@@ -88,6 +88,8 @@
 #define IDC_EDIT_DATA_EXPORT_FUN_NUM    1108
 #define IDC_LIST_IMPORT_MODULE          1109
 #define IDC_LIST_IMPORT_FUNTION         1110
+#define IDC_LIST_PROCESS_INFO           1111
+#define IDC_LIST_THREAD_INFO            1112
 
 // Next default values for new objects
 // 
@@ -95,7 +97,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        148
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1008
+#define _APS_NEXT_CONTROL_VALUE         1010
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif
