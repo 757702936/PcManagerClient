@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="文件管理">
+      <UniqueIdentifier>{36bc7edd-b0ec-4df9-9d68-ecf2fc18d27e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PcManagerClient.h">
@@ -39,9 +42,6 @@
     <ClInclude Include="CCleaner.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="CFileInfo.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="CKillVirus.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -53,6 +53,24 @@
     </ClInclude>
     <ClInclude Include="CTools.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CFileInfo.h">
+      <Filter>文件管理</Filter>
+    </ClInclude>
+    <ClInclude Include="CPeExportTable.h">
+      <Filter>文件管理</Filter>
+    </ClInclude>
+    <ClInclude Include="CPeFileDataDirectoryTable.h">
+      <Filter>文件管理</Filter>
+    </ClInclude>
+    <ClInclude Include="CPeFileMainMenu.h">
+      <Filter>文件管理</Filter>
+    </ClInclude>
+    <ClInclude Include="CPeFileSectionTable.h">
+      <Filter>文件管理</Filter>
+    </ClInclude>
+    <ClInclude Include="CPeImportTable.h">
+      <Filter>文件管理</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -71,9 +89,6 @@
     <ClCompile Include="CCleaner.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="CFileInfo.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="CKillVirus.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -85,6 +100,24 @@
     </ClCompile>
     <ClCompile Include="CTools.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CFileInfo.cpp">
+      <Filter>文件管理</Filter>
+    </ClCompile>
+    <ClCompile Include="CPeExportTable.cpp">
+      <Filter>文件管理</Filter>
+    </ClCompile>
+    <ClCompile Include="CPeFileDataDirectoryTable.cpp">
+      <Filter>文件管理</Filter>
+    </ClCompile>
+    <ClCompile Include="CPeFileMainMenu.cpp">
+      <Filter>文件管理</Filter>
+    </ClCompile>
+    <ClCompile Include="CPeFileSectionTable.cpp">
+      <Filter>文件管理</Filter>
+    </ClCompile>
+    <ClCompile Include="CPeImportTable.cpp">
+      <Filter>文件管理</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
