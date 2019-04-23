@@ -15,6 +15,7 @@
 #define IDD_PE_SECTIONS_TABLE           143
 #define IDD_PE_EXPORT_TABLE             144
 #define IDD_PE_IMPORT_TABLE             146
+#define IDD_DESKTOP_WINDOWS             148
 #define IDC_TAB_MAIN_INTERFACE          1000
 #define IDC_BTN_OPEN_PE_FILE            1001
 #define IDC_EDIT_DOS_Magic              1002
@@ -94,14 +95,17 @@
 #define IDC_LIST_PROCESS_MODULE_INFO    1113
 #define IDC_BTN_CLOSE_THREAD            1114
 #define IDC_BTN_REFRESH_PROCESS         1115
+#define IDC_BTN_DESKTOP_WINDOWS         1116
+#define IDC_LIST_DESKTOP_WINDOWS        1117
+
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        148
+#define _APS_NEXT_RESOURCE_VALUE        150
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1014
+#define _APS_NEXT_CONTROL_VALUE         1016
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

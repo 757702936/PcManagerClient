@@ -7,6 +7,7 @@
 #include "afxdialogex.h"
 #include <TlHelp32.h>
 #include <Psapi.h>
+#include "CDesktopWindows.h"
 
 // CProcessInfo 对话框
 
@@ -37,6 +38,7 @@ BEGIN_MESSAGE_MAP(CProcessInfo, CDialogEx)
 	ON_BN_CLICKED(IDC_BTN_CLOSE_THREAD, &CProcessInfo::OnClickedBtnCloseThread)
 	ON_BN_CLICKED(IDC_BTN_REFRESH_PROCESS, &CProcessInfo::OnClickedBtnRefreshProcess)
 	ON_NOTIFY(NM_CLICK, IDC_LIST_THREAD_INFO, &CProcessInfo::OnClickedThreadInfo)
+	ON_BN_CLICKED(IDC_BTN_DESKTOP_WINDOWS, &CProcessInfo::OnClickedBtnDesktopWindows)
 END_MESSAGE_MAP()
 
 
@@ -197,7 +199,7 @@ void CProcessInfo::ShowModuleInfo(DWORD nProcessID)
 	TCHAR szModuleName[MAX_PATH]; // 用来保存模块名的数组
 	CString strModuleSize; // 用来保存模块大小
 	// 因为dwBuffSize是字节数，不是模块句柄的个数，因此要除以每个句柄的字节数
-	for (int i = 0; i < dwBuffSize / sizeof(HMODULE); ++i)
+	for (DWORD i = 0; i < dwBuffSize / sizeof(HMODULE); ++i)
 	{
 		MODULEINFO stcModuleInfo = { 0 };
 		// 根据进程句柄和模块句柄来获取模块信息
@@ -249,6 +251,11 @@ void CProcessInfo::OnClickedBtnCloseProcess()
 			m_listModuleInfo.DeleteAllItems(); // 清空模块列表
 			CloseHandle(hProcess); // 关闭该进程句柄
 		}
+		else
+		{
+			MessageBox(_T("请指定一个进程"), _T("错误"));
+			return;
+		}
 	}
 }
 
@@ -267,6 +274,11 @@ void CProcessInfo::OnClickedBtnCloseThread()
 			m_listThreadInfo.DeleteItem(nIndex); // 删除指定行
 			CloseHandle(hThread); // 关闭该进程句柄
 		}
+		else
+		{
+			MessageBox(_T("请指定一个线程"), _T("错误"));
+			return;
+		}
 	}
 }
 
@@ -282,4 +294,12 @@ void CProcessInfo::OnClickedThreadInfo(NMHDR* pNMHDR, LRESULT* pResult)
 	LPNMITEMACTIVATE pNMItemActivate = reinterpret_cast<LPNMITEMACTIVATE>(pNMHDR);
 
 	*pResult = 0;
+}
+
+// 点击显示桌面窗口对话框
+void CProcessInfo::OnClickedBtnDesktopWindows()
+{
+	CDesktopWindows* pDesktop = new CDesktopWindows;
+	pDesktop->Create(IDD_DESKTOP_WINDOWS);
+	pDesktop->ShowWindow(SW_SHOW);
 }

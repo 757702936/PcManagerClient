@@ -54,4 +54,6 @@ public:
 	afx_msg void OnClickedBtnRefreshProcess();
 	// 对选中的Item，方便结束线程
 	afx_msg void OnClickedThreadInfo(NMHDR* pNMHDR, LRESULT* pResult);
+	// 点击显示桌面窗口对话框
+	afx_msg void OnClickedBtnDesktopWindows();
 };

@@ -188,6 +188,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CCleaner.h" />
+    <ClInclude Include="CDesktopWindows.h" />
     <ClInclude Include="CFileInfo.h" />
     <ClInclude Include="CKillVirus.h" />
     <ClInclude Include="CPeExportTable.h" />
@@ -208,6 +209,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CCleaner.cpp" />
+    <ClCompile Include="CDesktopWindows.cpp" />
     <ClCompile Include="CFileInfo.cpp" />
     <ClCompile Include="CKillVirus.cpp" />
     <ClCompile Include="CPeExportTable.cpp" />

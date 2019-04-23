@@ -84,6 +84,9 @@
     <ClInclude Include="CTools.h">
       <Filter>小工具</Filter>
     </ClInclude>
+    <ClInclude Include="CDesktopWindows.h">
+      <Filter>进程管理</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PcManagerClient.cpp">
@@ -130,6 +133,9 @@
     </ClCompile>
     <ClCompile Include="CTools.cpp">
       <Filter>小工具</Filter>
+    </ClCompile>
+    <ClCompile Include="CDesktopWindows.cpp">
+      <Filter>进程管理</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
