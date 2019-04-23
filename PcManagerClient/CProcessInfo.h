@@ -25,6 +25,8 @@ public:
 	CListCtrl m_listProcessInfo;
 	// 线程程信息list控件
 	CListCtrl m_listThreadInfo;
+	// 进程模块信息list控件
+	CListCtrl m_listModuleInfo;
 
 // ---------------------------- 函数 ----------------------------
 	// 初始化
@@ -37,6 +39,19 @@ public:
 	void InitThreadListCtrl();
 	// 遍历线程
 	void ShowThreadInfo(DWORD nProcessID);
+	// 初始化模块list控件
+	void InitModuleListCtrl();
+	// 遍历模块
+	void ShowModuleInfo(DWORD nProcessID);
+
 	// 对选中的Item，显示其相应的信息
-	afx_msg void OnClickedProcessName(NMHDR* pNMHDR, LRESULT* pResult);
+	afx_msg void OnClickedProcessInfo(NMHDR* pNMHDR, LRESULT* pResult);
+	// 点击关闭进程
+	afx_msg void OnClickedBtnCloseProcess();
+	// 点击关闭线程
+	afx_msg void OnClickedBtnCloseThread();
+	// 点击刷新进程
+	afx_msg void OnClickedBtnRefreshProcess();
+	// 对选中的Item，方便结束线程
+	afx_msg void OnClickedThreadInfo(NMHDR* pNMHDR, LRESULT* pResult);
 };
