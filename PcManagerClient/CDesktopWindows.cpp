@@ -49,6 +49,7 @@ BOOL CDesktopWindows::OnInitDialog()
 	// 初始化桌面窗口list控件
 	InitDesktopListCtrl();
 	ShowDesktopWindowsInfo();
+
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 异常: OCX 属性页应返回 FALSE
 }

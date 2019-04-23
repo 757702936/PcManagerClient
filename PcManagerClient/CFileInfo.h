@@ -24,6 +24,7 @@ public:
 	// 存储PE文件
 	char* m_pPeBuff;
 
+	// ---------------------------- 函数 ----------------------------
 	// 设置PE文件内容
 	void SetPeFileContent(char* pBuff, int nSize);
 	// 点击按钮打开PE文件
