@@ -5,8 +5,6 @@
 #include "PcManagerClient.h"
 #include "CProcessInfo.h"
 #include "afxdialogex.h"
-#include <TlHelp32.h>
-#include <Psapi.h>
 #include "CDesktopWindows.h"
 
 // CProcessInfo 对话框

@@ -9,6 +9,8 @@
 #endif
 
 #include "resource.h"		// 主符号
+#include <TlHelp32.h>
+#include <Psapi.h>
 
 
 // CPcManagerApp:

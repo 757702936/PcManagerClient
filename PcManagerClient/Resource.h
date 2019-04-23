@@ -32,13 +32,19 @@
 #define IDC_EDIT_OPTIONAL_SectionAligment 1013
 #define IDC_EDIT_OPTIONAL_FileAlignment 1014
 #define IDC_EDIT_OPTIONAL_SizeOfImage   1015
+#define IDC_LIST_DESKTOP_WINDOWS        1015
 #define IDC_EDIT_OPTIONAL_SizeOfHeaders 1016
+#define IDC_PROGRESS_CPU_USAGE          1016
 #define IDC_EDIT_OPTIONAL_Subsystem     1017
+#define IDC_PROGRESS_MEMORY_USAGE       1017
 #define IDC_EDIT_OPTIONAL_DllCharacteristics 1018
+#define IDC_BTN_MEMORY_CLEAR            1018
 #define IDC_EDIT_OPTIONAL_NumberOfRvaAndSizes 1019
 #define IDC_BTN_OPEN_SECTIONS           1020
 #define IDC_LIST_SECTION_INFO           1021
+#define IDC_EDIT_CPU_USAGE              1021
 #define IDC_BTN_OPEN_DATA_DIRECTORY     1022
+#define IDC_EDIT_MEMORY_USAGE           1022
 #define IDC_EDIT_NT_OPTIONAL_EXPORT_RVA 1023
 #define IDC_EDIT_NT_OPTIONAL_EXPORT_SIZE 1024
 #define IDC_EDIT_NT_OPTIONAL_IMPORT_RVA 1025
@@ -96,7 +102,7 @@
 #define IDC_BTN_CLOSE_THREAD            1114
 #define IDC_BTN_REFRESH_PROCESS         1115
 #define IDC_BTN_DESKTOP_WINDOWS         1116
-#define IDC_LIST_DESKTOP_WINDOWS        1117
+#define IDC_EDIT_MEMORY_CLEAR           1117
 
 
 // Next default values for new objects
@@ -105,7 +111,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        150
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1016
+#define _APS_NEXT_CONTROL_VALUE         1024
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif
