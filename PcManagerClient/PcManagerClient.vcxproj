@@ -200,6 +200,7 @@
     <ClInclude Include="CSoftwareManager.h" />
     <ClInclude Include="CTabMainInterface.h" />
     <ClInclude Include="CTools.h" />
+    <ClInclude Include="CustomMessage.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PcManagerClient.h" />

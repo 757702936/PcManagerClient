@@ -16,8 +16,9 @@ CCleaner::CCleaner(CWnd* pParent /*=nullptr*/)
 	, m_strCpuUsage(_T(""))
 	, m_strMemUsage(_T(""))
 	, m_strMemClear(_T(""))
+	, m_strVsPath(_T(""))
 {
-
+	m_bFilter = false;
 }
 
 CCleaner::~CCleaner()
@@ -32,12 +33,18 @@ void CCleaner::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_EDIT_CPU_USAGE, m_strCpuUsage);
 	DDX_Text(pDX, IDC_EDIT_MEMORY_USAGE, m_strMemUsage);
 	DDX_Text(pDX, IDC_EDIT_MEMORY_CLEAR, m_strMemClear);
+	DDX_Text(pDX, IDC_EDIT_VS_PROJECT_PATH, m_strVsPath);
+	DDX_Control(pDX, IDC_LIST_CLEAR_RUBBISH_STATE, m_listRubbishState);
 }
 
 
 BEGIN_MESSAGE_MAP(CCleaner, CDialogEx)
 	ON_BN_CLICKED(IDC_BTN_MEMORY_CLEAR, &CCleaner::OnClickedBtnMemoryClear)
-	ON_WM_TIMER()
+	ON_BN_CLICKED(IDC_BTN_EMPTY_RB, &CCleaner::OnClickedBtnEmptyRubbish)
+	ON_BN_CLICKED(IDC_BTN_SYSTEM_RB, &CCleaner::OnClickedBtnSystemRubbish)
+	ON_BN_CLICKED(IDC_BTN_BROWSER_RB, &CCleaner::OnClickedBtnBrowserRubbish)
+	ON_MESSAGE(WM_FILEPATH, &CCleaner::OnRecvFilePath)
+	ON_BN_CLICKED(IDC_BTN_VS_PROJECT_RB, &CCleaner::OnClickedBtnVsProjectRubbish)
 END_MESSAGE_MAP()
 
 
@@ -50,8 +57,15 @@ BOOL CCleaner::OnInitDialog()
 
 	// TODO:  在此添加额外的初始化
 
+	// 初始化垃圾清理状态list控件
+	InitRbStateListCtrl();
+
+	// 创建CPU使用率子线程
 	CreateThread_CpuUsage();
+	// 创建内存使用率子线程
 	CreateThread_MemoryUsage();
+
+	//this->DragAcceptFiles(TRUE);
 
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 异常: OCX 属性页应返回 FALSE
@@ -190,4 +204,155 @@ BOOL CCleaner::CreateThread_CpuUsage()
 	}
 
 	return TRUE;
+}
+
+// 点击清空回收站
+void CCleaner::OnClickedBtnEmptyRubbish()
+{
+	// 初始化 SHQUERYRBINFO 结构体
+	SHQUERYRBINFO stcRbInfo = {};
+	stcRbInfo.cbSize = sizeof(stcRbInfo);
+	// 查询回收站信息
+	SHQueryRecycleBin(NULL, &stcRbInfo);
+	if (0 == stcRbInfo.i64Size)
+	{
+		MessageBox(_T("回收站已经清空"), _T("错误"));
+		return;
+	}
+
+	// 清空回收站
+	SHEmptyRecycleBin(
+		NULL,
+		NULL,
+		NULL/*SHERB_NOCONFIRMATION | SHERB_NOPROGRESSUI | SHERB_NOSOUND*/
+	);
+}
+
+// 清理系统垃圾
+void CCleaner::OnClickedBtnSystemRubbish()
+{
+	// 为假，不过滤后缀名
+	m_bFilter = false;
+	// 插入之前要先清空列表
+	m_listRubbishState.DeleteAllItems();
+
+	TCHAR strPath[MAX_PATH] = L"C:\\Windows\\Temp";
+	EnumFiles(strPath);
+}
+
+// 清理浏览器Url垃圾
+void CCleaner::OnClickedBtnBrowserRubbish()
+{
+	// 为假，不过滤后缀名
+	m_bFilter = false;
+	// 插入之前要先清空列表
+	m_listRubbishState.DeleteAllItems();
+
+	TCHAR strPath[MAX_PATH] =
+		L"C:\\Users\\PC\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\n36m5wqo.default\\cache2\\entries";
+	EnumFiles(strPath);
+}
+
+// 遍历删除文件
+void CCleaner::EnumFiles(TCHAR* pPath)
+{
+	CFileFind tempFind;
+	TCHAR szTempFile[MAX_PATH] = { 0 };
+	wsprintf(szTempFile, _T("%s\\*.*"), pPath);
+	BOOL IsFinded = tempFind.FindFile(szTempFile);
+	UINT nIndex = 0;
+	while (IsFinded)
+	{
+		IsFinded = tempFind.FindNextFile();
+		// 排除两个特殊目录
+		if (!tempFind.IsDots())
+		{
+			TCHAR szFoundFileName[200] = { 0 };
+			_tcscpy_s(szFoundFileName, tempFind.GetFileName().GetBuffer(200));
+			// 若是目录，则递归
+			if (tempFind.IsDirectory())
+			{
+				TCHAR szTempDir[200] = { 0 };
+				wsprintf(szTempDir, _T("%s\\%s"), pPath, szFoundFileName);
+				EnumFiles(szTempDir); //递归
+				RemoveDirectory(szTempDir);
+			}
+			// 若是文件，则删除
+			else
+			{
+				TCHAR szTempFileName[200] = { 0 };
+				wsprintf(szTempFileName, _T("%s\\%s"), pPath, szFoundFileName);
+
+				// 为真，过滤后缀名
+				if (m_bFilter)
+				{
+					LPWSTR fileSuffix = PathFindExtension(szTempFileName);
+					if (!lstrcmp(fileSuffix, L".tlog")
+						|| !lstrcmp(fileSuffix, L".obj")
+						|| !lstrcmp(fileSuffix, L".pch")
+						|| !lstrcmp(fileSuffix, L".ilk")
+						|| !lstrcmp(fileSuffix, L".pdb")
+						)
+					{
+						//DeleteFile(szTempFileName);
+						CString success = L"删除成功";
+						m_listRubbishState.InsertItem(nIndex, success);
+						m_listRubbishState.SetItemText(nIndex, 1, szTempFileName);
+						nIndex++;
+					}
+				}
+				
+				if (!m_bFilter)
+				{
+					//DeleteFile(szTempFileName);
+					CString success = L"删除成功";
+					m_listRubbishState.InsertItem(nIndex, success);
+					m_listRubbishState.SetItemText(nIndex, 1, szTempFileName);
+					nIndex++;
+				}
+			}// 若是文件，则删除
+		}// 排除两个特殊目录
+	}// while循环
+	tempFind.Close();	
+}
+
+// 初始化垃圾清理状态list控件
+void CCleaner::InitRbStateListCtrl()
+{
+	m_listRubbishState.SetExtendedStyle(
+		LVS_EX_FULLROWSELECT | LVS_EX_GRIDLINES);
+	m_listRubbishState.InsertColumn(
+		0, _T("状态"), 0, 80);
+	m_listRubbishState.InsertColumn(
+		1, _T("文件路径"), 0, 400);
+}
+
+
+// 接收文件路径
+afx_msg LRESULT CCleaner::OnRecvFilePath(WPARAM wParam, LPARAM lParam)
+{
+	TCHAR* strPath = (TCHAR*)wParam;
+	m_strVsPath.Format(_T("%s"), strPath);
+	UpdateData(FALSE);
+	
+	return 0;
+}
+
+// 清理VS工程垃圾文件
+void CCleaner::OnClickedBtnVsProjectRubbish()
+{
+	// 判断编辑框内容是否为空
+	UpdateData(TRUE);
+	if (m_strVsPath.IsEmpty())
+	{
+		MessageBox(_T("请输入路径"), _T("错误"));
+		return;
+	}
+
+	TCHAR* strPath = m_strVsPath.GetBuffer();
+	// 为真，过滤后缀名
+	m_bFilter = true;
+	// 插入之前要先清空列表
+	m_listRubbishState.DeleteAllItems();
+	EnumFiles(strPath);
 }

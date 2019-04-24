@@ -40,11 +40,14 @@ void CFileInfo::OnClickedBtnOpenPeFile()
 {
 	CFile file;
 	CString filePath; // 获取文件路径
-	CString filter; // 文件扩展名
+	CString filter; // 过滤文件扩展名
 	BOOL isOpen = TRUE; // TRUE 为打开文件，FALSE 为保存文件
 
 	filter = "PE文件(*.exe)|*.exe|DLL(*.dll)|*.dll|驱动(*.sys)|*.sys|所有PE文件(*.*)|*.*|";
+
+	// 使用 CFileDialog 类 可以弹出一个对话框，可以选择文件
 	CFileDialog dlg(isOpen, NULL, NULL, OFN_HIDEREADONLY, filter);
+
 	if (dlg.DoModal() == IDOK)
 	{
 		filePath = dlg.GetPathName();// 获取文件路径

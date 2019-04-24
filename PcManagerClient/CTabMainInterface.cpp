@@ -106,6 +106,7 @@ void CTabMainInterface::ShowTabDlg(WORD nIndex)
 
 BEGIN_MESSAGE_MAP(CTabMainInterface, CTabCtrl)
 	ON_NOTIFY_REFLECT(TCN_SELCHANGE, &CTabMainInterface::OnTcnSelchange)
+	ON_WM_DROPFILES()
 END_MESSAGE_MAP()
 
 
@@ -120,4 +121,22 @@ void CTabMainInterface::OnTcnSelchange(NMHDR* pNMHDR, LRESULT* pResult)
 	// TODO: 在此添加控件通知处理程序代码
 	ShowTabDlg(this->GetCurSel());
 	*pResult = 0;
+}
+
+
+void CTabMainInterface::OnDropFiles(HDROP hDropInfo)
+{
+	// 获取 垃圾清理对话框 对象
+	CCleaner* pClear = new CCleaner;
+	// 存放文件路径
+	TCHAR szFilePath[MAX_PATH + 1] = { 0 };
+	// 获取拖放进来的文件路径
+	DragQueryFile(hDropInfo, 0, szFilePath, MAX_PATH);
+	SetDlgItemText(IDC_EDIT_VS_PROJECT_PATH, szFilePath);
+	// 发送自定义消息，把获取到的 文件路径 发送给 垃圾清理对话框
+	::SendMessage(m_pDlg[1]->m_hWnd, WM_FILEPATH, (WPARAM)szFilePath, NULL);
+	// 释放拖放占用内存
+	DragFinish(hDropInfo);
+
+	CTabCtrl::OnDropFiles(hDropInfo);
 }

@@ -29,6 +29,7 @@ public:
 	void ShowTabDlg(WORD nNum);
 	// 点击选定的选项，显示选定的对话框
 	afx_msg void OnTcnSelchange(NMHDR* pNMHDR, LRESULT* pResult);
+	afx_msg void OnDropFiles(HDROP hDropInfo);
 };
 
 

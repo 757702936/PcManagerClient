@@ -10,9 +10,6 @@
     <Filter Include="进程管理">
       <UniqueIdentifier>{6621d4eb-d8e6-44b4-b135-f271b5b90c3e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="文件管理">
-      <UniqueIdentifier>{d13acfb9-f5c5-4238-9505-2f771b508e5d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="主界面">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
@@ -28,28 +25,25 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="文件信息">
+      <UniqueIdentifier>{d13acfb9-f5c5-4238-9505-2f771b508e5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="文件信息\解析PE文件">
+      <UniqueIdentifier>{f75a8544-e964-4b14-8097-ae67859c8b59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="文件信息\文件详细信息">
+      <UniqueIdentifier>{01d05687-7a9b-4611-9a0e-4eb5af476f51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="数据声明">
+      <UniqueIdentifier>{a0ed4127-6985-4c64-945f-108cf930e76a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCleaner.h">
       <Filter>垃圾清理</Filter>
     </ClInclude>
     <ClInclude Include="CFileInfo.h">
-      <Filter>文件管理</Filter>
-    </ClInclude>
-    <ClInclude Include="CPeExportTable.h">
-      <Filter>文件管理</Filter>
-    </ClInclude>
-    <ClInclude Include="CPeFileDataDirectoryTable.h">
-      <Filter>文件管理</Filter>
-    </ClInclude>
-    <ClInclude Include="CPeFileMainMenu.h">
-      <Filter>文件管理</Filter>
-    </ClInclude>
-    <ClInclude Include="CPeFileSectionTable.h">
-      <Filter>文件管理</Filter>
-    </ClInclude>
-    <ClInclude Include="CPeImportTable.h">
-      <Filter>文件管理</Filter>
+      <Filter>文件信息</Filter>
     </ClInclude>
     <ClInclude Include="CKillVirus.h">
       <Filter>杀毒</Filter>
@@ -87,6 +81,24 @@
     <ClInclude Include="CDesktopWindows.h">
       <Filter>进程管理</Filter>
     </ClInclude>
+    <ClInclude Include="CPeExportTable.h">
+      <Filter>文件信息\解析PE文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CPeFileDataDirectoryTable.h">
+      <Filter>文件信息\解析PE文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CPeFileMainMenu.h">
+      <Filter>文件信息\解析PE文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CPeFileSectionTable.h">
+      <Filter>文件信息\解析PE文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CPeImportTable.h">
+      <Filter>文件信息\解析PE文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomMessage.h">
+      <Filter>数据声明</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PcManagerClient.cpp">
@@ -99,22 +111,7 @@
       <Filter>主界面</Filter>
     </ClCompile>
     <ClCompile Include="CFileInfo.cpp">
-      <Filter>文件管理</Filter>
-    </ClCompile>
-    <ClCompile Include="CPeExportTable.cpp">
-      <Filter>文件管理</Filter>
-    </ClCompile>
-    <ClCompile Include="CPeFileDataDirectoryTable.cpp">
-      <Filter>文件管理</Filter>
-    </ClCompile>
-    <ClCompile Include="CPeFileMainMenu.cpp">
-      <Filter>文件管理</Filter>
-    </ClCompile>
-    <ClCompile Include="CPeFileSectionTable.cpp">
-      <Filter>文件管理</Filter>
-    </ClCompile>
-    <ClCompile Include="CPeImportTable.cpp">
-      <Filter>文件管理</Filter>
+      <Filter>文件信息</Filter>
     </ClCompile>
     <ClCompile Include="CCleaner.cpp">
       <Filter>垃圾清理</Filter>
@@ -136,6 +133,21 @@
     </ClCompile>
     <ClCompile Include="CDesktopWindows.cpp">
       <Filter>进程管理</Filter>
+    </ClCompile>
+    <ClCompile Include="CPeExportTable.cpp">
+      <Filter>文件信息\解析PE文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CPeFileDataDirectoryTable.cpp">
+      <Filter>文件信息\解析PE文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CPeFileMainMenu.cpp">
+      <Filter>文件信息\解析PE文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CPeFileSectionTable.cpp">
+      <Filter>文件信息\解析PE文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CPeImportTable.cpp">
+      <Filter>文件信息\解析PE文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

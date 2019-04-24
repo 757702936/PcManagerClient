@@ -12,6 +12,8 @@
 #include <TlHelp32.h>
 #include <Psapi.h>
 #include <Winsvc.h>
+#include <wininet.h>
+#include "CustomMessage.h"
 
 
 // CPcManagerApp:
