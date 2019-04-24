@@ -88,7 +88,7 @@ public:
 	// COM信息表大小
 	CString m_strDescriptor_Size;
 	
-// ---------------------------- 函数 ----------------------------
+	// ---------------------------- 函数 ----------------------------
 	virtual BOOL OnInitDialog();
 	// 显示各个数据目录表的RVA与大小
 	void ShowEachDataDirectoryInfo();
@@ -98,4 +98,12 @@ public:
 	afx_msg void OnClickedBtnExportTable();
 	// 点击显示导入表对话框
 	afx_msg void OnClickedBtnImportTable();
+	// 点击显示资源表对话框
+	afx_msg void OnClickedBtnResourceTable();
+	// 点击显示TLS表对话框
+	afx_msg void OnClickedBtnTlsTable();
+	// 点击显示重定位表对话框
+	afx_msg void OnClickedBtnRelocTable();
+	// 点击显示延迟加载表对话框
+	afx_msg void OnClickedBtnDelayImportTable();
 };

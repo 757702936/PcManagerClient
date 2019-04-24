@@ -16,6 +16,10 @@
 #define IDD_PE_EXPORT_TABLE             144
 #define IDD_PE_IMPORT_TABLE             146
 #define IDD_DESKTOP_WINDOWS             148
+#define IDD_PE_RESOURCE_TABLE           150
+#define IDD_PE_TLS_TABLE                152
+#define IDD_PE_RELOC_TABLE              154
+#define IDD_PE_DELAY_IMPORT_TABLE       156
 #define IDC_TAB_MAIN_INTERFACE          1000
 #define IDC_BTN_OPEN_PE_FILE            1001
 #define IDC_EDIT_DOS_Magic              1002
@@ -54,6 +58,12 @@
 #define IDC_EDIT_NT_OPTIONAL_EXCEPTION_RVA 1029
 #define IDC_EDIT_NT_OPTIONAL_EXCEPTION_SIZE 1030
 #define IDC_BTN_NT_OPTIONAL_EXPORT      1031
+#define IDC_EDIT_TLS_STARTAS            1032
+#define IDC_EDIT_TLS_ENDAS              1033
+#define IDC_EDIT_TLS_CALLBACKAS         1034
+#define IDC_LIST_RELOC_INFO             1034
+#define IDC_LIST_RELOC_DATA             1035
+#define IDC_LIST_DELAY_INFO             1037
 #define IDC_EDIT_NT_OPTIONAL_SECURITY_RVA 1039
 #define IDC_EDIT_NT_OPTIONAL_SECURITY_SIZE 1040
 #define IDC_EDIT_NT_OPTIONAL_BASERELOC_RVA 1041
@@ -110,15 +120,15 @@
 #define IDC_BTN_SYSTEM_RB               1122
 #define IDC_BTN_BROWSER_RB              1123
 #define IDC_BTN_VS_PROJECT_RB           1124
-
+#define IDC_TREE_RESOURCE_INFO          1125
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        150
+#define _APS_NEXT_RESOURCE_VALUE        158
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1030
+#define _APS_NEXT_CONTROL_VALUE         1038
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

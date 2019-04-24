@@ -6,6 +6,10 @@
 #include "CPeFileDataDirectoryTable.h"
 #include "CPeExportTable.h"
 #include "CPeImportTable.h"
+#include "CPeResourceTable.h"
+#include "CPeTlsTable.h"
+#include "CPeRelocTable.h"
+#include "CPeDelayTable.h"
 #include "afxdialogex.h"
 
 
@@ -103,6 +107,10 @@ void CPeFileDataDirectoryTable::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CPeFileDataDirectoryTable, CDialogEx)
 	ON_BN_CLICKED(IDC_BTN_NT_OPTIONAL_EXPORT, &CPeFileDataDirectoryTable::OnClickedBtnExportTable)
 	ON_BN_CLICKED(IDC_BTN_NT_OPTIONAL_IMPORT, &CPeFileDataDirectoryTable::OnClickedBtnImportTable)
+	ON_BN_CLICKED(IDC_BTN_NT_OPTIONAL_RESOURCE, &CPeFileDataDirectoryTable::OnClickedBtnResourceTable)
+	ON_BN_CLICKED(IDC_BTN_NT_OPTIONAL_TLS, &CPeFileDataDirectoryTable::OnClickedBtnTlsTable)
+	ON_BN_CLICKED(IDC_BTN_NT_OPTIONAL_BASERELOC, &CPeFileDataDirectoryTable::OnClickedBtnRelocTable)
+	ON_BN_CLICKED(IDC_BTN_NT_OPTIONAL_DELAY_IMPORT, &CPeFileDataDirectoryTable::OnClickedBtnDelayImportTable)
 END_MESSAGE_MAP()
 
 
@@ -259,4 +267,88 @@ void CPeFileDataDirectoryTable::OnClickedBtnImportTable()
 	CPeImportTable* pImportDlg = new CPeImportTable(m_pPeBuff, pImport);
 	pImportDlg->Create(IDD_PE_IMPORT_TABLE);
 	pImportDlg->ShowWindow(SW_SHOW);
+}
+
+// 点击显示资源表对话框
+void CPeFileDataDirectoryTable::OnClickedBtnResourceTable()
+{
+	if (m_pDataDirectory[2].VirtualAddress == NULL)
+	{
+		MessageBox(_T("该PE文件无资源表"), _T("错误"));
+		return;
+	}
+
+	//计算资源表的文件偏移FOA
+	DWORD dwResourceFOA = RVAtoFOA(m_pDataDirectory[2].VirtualAddress);
+	//具体在文件中的位置
+	PIMAGE_RESOURCE_DIRECTORY pResource =
+		(PIMAGE_RESOURCE_DIRECTORY)(dwResourceFOA + m_pPeBuff);
+
+	// 创建资源表对话框
+	CPeResourceTable* pResourceDlg = new CPeResourceTable(m_pPeBuff, pResource);
+	pResourceDlg->Create(IDD_PE_RESOURCE_TABLE);
+	pResourceDlg->ShowWindow(SW_SHOW);
+}
+
+// 点击显示TLS表对话框
+void CPeFileDataDirectoryTable::OnClickedBtnTlsTable()
+{
+	if (m_pDataDirectory[9].VirtualAddress == NULL)
+	{
+		MessageBox(_T("该PE文件无TLS表"), _T("错误"));
+		return;
+	}
+
+	//计算TLS表的文件偏移FOA
+	DWORD dwTlsFOA = RVAtoFOA(m_pDataDirectory[9].VirtualAddress);
+	//具体在文件中的位置
+	PIMAGE_TLS_DIRECTORY pTls =
+		(PIMAGE_TLS_DIRECTORY)(dwTlsFOA + m_pPeBuff);
+
+	// 创建TLS表对话框
+	CPeTlsTable* pTlsDlg = new CPeTlsTable(m_pPeBuff, pTls);
+	pTlsDlg->Create(IDD_PE_TLS_TABLE);
+	pTlsDlg->ShowWindow(SW_SHOW);
+}
+
+// 点击显示重定位表对话框
+void CPeFileDataDirectoryTable::OnClickedBtnRelocTable()
+{
+	if (m_pDataDirectory[5].VirtualAddress == NULL)
+	{
+		MessageBox(_T("该PE文件无重定位表"), _T("错误"));
+		return;
+	}
+
+	//计算重定位表的文件偏移FOA
+	DWORD dwRelocFOA = RVAtoFOA(m_pDataDirectory[5].VirtualAddress);
+	//具体在文件中的位置
+	PIMAGE_BASE_RELOCATION pReloc =
+		(PIMAGE_BASE_RELOCATION)(dwRelocFOA + m_pPeBuff);
+
+	// 创建重定位表对话框
+	CPeRelocTable* pRelocDlg = new CPeRelocTable(m_pPeBuff, pReloc);
+	pRelocDlg->Create(IDD_PE_RELOC_TABLE);
+	pRelocDlg->ShowWindow(SW_SHOW);
+}
+
+// 点击显示延迟加载表对话框
+void CPeFileDataDirectoryTable::OnClickedBtnDelayImportTable()
+{
+	if (m_pDataDirectory[13].VirtualAddress == NULL)
+	{
+		MessageBox(_T("该PE文件无延迟加载表"), _T("错误"));
+		return;
+	}
+
+	//计算延迟加载表的文件偏移FOA
+	DWORD dwDelayFOA = RVAtoFOA(m_pDataDirectory[13].VirtualAddress);
+	//具体在文件中的位置
+	PIMAGE_DELAYLOAD_DESCRIPTOR pDelay =
+		(PIMAGE_DELAYLOAD_DESCRIPTOR)(dwDelayFOA + m_pPeBuff);
+
+	// 创建延迟加载表对话框
+	CPeDelayTable* pDelayDlg = new CPeDelayTable(m_pPeBuff, pDelay);
+	pDelayDlg->Create(IDD_PE_DELAY_IMPORT_TABLE);
+	pDelayDlg->ShowWindow(SW_SHOW);
 }

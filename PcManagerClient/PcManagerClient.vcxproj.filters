@@ -99,6 +99,18 @@
     <ClInclude Include="CustomMessage.h">
       <Filter>数据声明</Filter>
     </ClInclude>
+    <ClInclude Include="CPeResourceTable.h">
+      <Filter>文件信息\解析PE文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CPeTlsTable.h">
+      <Filter>文件信息\解析PE文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CPeRelocTable.h">
+      <Filter>文件信息\解析PE文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CPeDelayTable.h">
+      <Filter>文件信息\解析PE文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PcManagerClient.cpp">
@@ -147,6 +159,18 @@
       <Filter>文件信息\解析PE文件</Filter>
     </ClCompile>
     <ClCompile Include="CPeImportTable.cpp">
+      <Filter>文件信息\解析PE文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CPeResourceTable.cpp">
+      <Filter>文件信息\解析PE文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CPeTlsTable.cpp">
+      <Filter>文件信息\解析PE文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CPeRelocTable.cpp">
+      <Filter>文件信息\解析PE文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CPeDelayTable.cpp">
       <Filter>文件信息\解析PE文件</Filter>
     </ClCompile>
   </ItemGroup>

@@ -292,6 +292,7 @@ void CCleaner::EnumFiles(TCHAR* pPath)
 						|| !lstrcmp(fileSuffix, L".pch")
 						|| !lstrcmp(fileSuffix, L".ilk")
 						|| !lstrcmp(fileSuffix, L".pdb")
+						|| !lstrcmp(fileSuffix, L".ipch")
 						)
 					{
 						//DeleteFile(szTempFileName);

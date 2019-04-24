@@ -14,6 +14,8 @@
 #include <Winsvc.h>
 #include <wininet.h>
 #include "CustomMessage.h"
+#include <stdio.h>
+#include <wchar.h>
 
 
 // CPcManagerApp:

@@ -24,14 +24,14 @@ protected:
 public:
 	// 接收PE文件内容
 	char* m_pPeBuff;
-	// 导出表地址
+	// 导入表地址
 	PIMAGE_IMPORT_DESCRIPTOR m_pImport;
 	// 模块信息
 	CListCtrl m_listModuleInfo;
 	// 模块里的函数信息
 	CListCtrl m_listFunOfModuleInfo;
 
-// ---------------------------- 函数 ----------------------------
+	// ---------------------------- 函数 ----------------------------
 	
 	// RVAtoFOA
 	DWORD RVAtoFOA(DWORD dwRVA);
