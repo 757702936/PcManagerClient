@@ -72,6 +72,14 @@
 #define IDC_EDIT_NT_OPTIONAL_DEBUG_SIZE 1044
 #define IDC_EDIT_NT_OPTIONAL_ARCHITECTURE_RVA 1045
 #define IDC_EDIT_NT_OPTIONAL_ARCHITECTURE_SIZE 1046
+#define IDC_RADIO_LOCAL_VIRUS           1047
+#define IDC_RADIO_NET_VIRUS             1048
+#define IDC_LIST_MD5_VIRUS              1049
+#define IDC_LIST_SELF_WHILE_LIST        1050
+#define IDC_LIST_OTHER_WHILE_LIST       1051
+#define IDC_BTN_SCAN_WHILE_LIST         1052
+#define IDC_BTN_DELETE_WHILE_LIST       1053
+#define IDC_GROUP_WHILE_LIST            1054
 #define IDC_EDIT_NT_OPTIONAL_GLOBALPTR_RVA 1077
 #define IDC_EDIT_NT_OPTIONAL_GLOBALPTR_SIZE 1078
 #define IDC_EDIT_NT_OPTIONAL_TLS_RVA    1079
@@ -127,6 +135,9 @@
 #define IDC_BTN_REBOOT                  1129
 #define IDC_BTN_LOGOFF                  1130
 #define IDC_BTN_SHUTDOWN                1131
+#define IDC_BTN_SCAN_VIRUS              1132
+#define IDC_BTN_KILL_VIRUS              1133
+#define IDC_GROUP_MD5                   1134
 
 // Next default values for new objects
 // 
@@ -134,7 +145,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        158
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1044
+#define _APS_NEXT_CONTROL_VALUE         1055
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

@@ -37,6 +37,9 @@
     <Filter Include="数据声明">
       <UniqueIdentifier>{a0ed4127-6985-4c64-945f-108cf930e76a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MD5">
+      <UniqueIdentifier>{f919849f-e5e2-4bf0-8a2c-9f893dbae5cf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCleaner.h">
@@ -111,6 +114,15 @@
     <ClInclude Include="CPeDelayTable.h">
       <Filter>文件信息\解析PE文件</Filter>
     </ClInclude>
+    <ClInclude Include="md5file.h">
+      <Filter>MD5</Filter>
+    </ClInclude>
+    <ClInclude Include="md5.h">
+      <Filter>MD5</Filter>
+    </ClInclude>
+    <ClInclude Include="md5global.h">
+      <Filter>MD5</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PcManagerClient.cpp">
@@ -172,6 +184,12 @@
     </ClCompile>
     <ClCompile Include="CPeDelayTable.cpp">
       <Filter>文件信息\解析PE文件</Filter>
+    </ClCompile>
+    <ClCompile Include="md5file.cpp">
+      <Filter>MD5</Filter>
+    </ClCompile>
+    <ClCompile Include="md5.cpp">
+      <Filter>MD5</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -58,7 +58,7 @@ void CFileInfo::OnClickedBtnOpenPeFile()
 			return;
 		}
 		// 获取文件长度
-		int nSize = file.GetLength();
+		UINT nSize = (UINT)file.GetLength();
 		// 将文件内容读取到缓存中
 		char* pBuff = new char[nSize] {0};
 		m_pPeBuff = new char[nSize];

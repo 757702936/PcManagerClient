@@ -5,7 +5,8 @@
 #include "PcManagerClient.h"
 #include "CCleaner.h"
 #include "afxdialogex.h"
-
+#include <Psapi.h>
+#include "CustomMessage.h"
 
 // CCleaner 对话框
 
@@ -272,6 +273,7 @@ void CCleaner::EnumFiles(TCHAR* pPath)
 			// 若是目录，则递归
 			if (tempFind.IsDirectory())
 			{
+				// 拼接目录名字
 				TCHAR szTempDir[200] = { 0 };
 				wsprintf(szTempDir, _T("%s\\%s"), pPath, szFoundFileName);
 				EnumFiles(szTempDir); //递归
@@ -295,7 +297,7 @@ void CCleaner::EnumFiles(TCHAR* pPath)
 						|| !lstrcmp(fileSuffix, L".ipch")
 						)
 					{
-						//DeleteFile(szTempFileName);
+						DeleteFile(szTempFileName);
 						CString success = L"删除成功";
 						m_listRubbishState.InsertItem(nIndex, success);
 						m_listRubbishState.SetItemText(nIndex, 1, szTempFileName);
@@ -305,7 +307,7 @@ void CCleaner::EnumFiles(TCHAR* pPath)
 				
 				if (!m_bFilter)
 				{
-					//DeleteFile(szTempFileName);
+					DeleteFile(szTempFileName);
 					CString success = L"删除成功";
 					m_listRubbishState.InsertItem(nIndex, success);
 					m_listRubbishState.SetItemText(nIndex, 1, szTempFileName);

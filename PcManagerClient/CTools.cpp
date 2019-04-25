@@ -5,6 +5,7 @@
 #include "PcManagerClient.h"
 #include "CTools.h"
 #include "afxdialogex.h"
+#include <Winsvc.h>
 #include <PowrProf.h>
 #pragma comment(lib,"PowrProf.lib")
 

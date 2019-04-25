@@ -10,6 +10,7 @@
 #include "CFileInfo.h"
 #include "CSoftwareManager.h"
 #include "CTools.h"
+#include "CustomMessage.h"
 
 
 // CTabMainInterface

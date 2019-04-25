@@ -9,13 +9,12 @@
 #endif
 
 #include "resource.h"		// 主符号
-#include <TlHelp32.h>
-#include <Psapi.h>
-#include <Winsvc.h>
-#include <wininet.h>
-#include "CustomMessage.h"
-#include <stdio.h>
-#include <wchar.h>
+
+//#include <TlHelp32.h>
+//#include <Winsvc.h>
+//#include <wininet.h>
+//#include "CustomMessage.h"
+//#include <wchar.h>
 
 
 // CPcManagerApp:
