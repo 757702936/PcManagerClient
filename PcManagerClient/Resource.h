@@ -121,6 +121,12 @@
 #define IDC_BTN_BROWSER_RB              1123
 #define IDC_BTN_VS_PROJECT_RB           1124
 #define IDC_TREE_RESOURCE_INFO          1125
+#define IDC_BTN_LOCK_WND                1126
+#define IDC_BTN_STANDBY                 1127
+#define IDC_BTN_HIBERNATE               1128
+#define IDC_BTN_REBOOT                  1129
+#define IDC_BTN_LOGOFF                  1130
+#define IDC_BTN_SHUTDOWN                1131
 
 // Next default values for new objects
 // 
@@ -128,7 +134,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        158
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1038
+#define _APS_NEXT_CONTROL_VALUE         1044
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

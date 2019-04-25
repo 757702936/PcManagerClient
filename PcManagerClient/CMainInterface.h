@@ -33,4 +33,8 @@ protected:
 public:
 	// 主界面TAB控件
 	CTabMainInterface m_tabMainInterface;
+	
+	// ---------------------------- 函数 ----------------------------
+	// 响应热键
+	afx_msg void OnHotKey(UINT nHotKeyId, UINT nKey1, UINT nKey2);
 };

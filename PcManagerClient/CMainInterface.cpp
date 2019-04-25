@@ -32,6 +32,7 @@ void CMainInterface::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CMainInterface, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_WM_HOTKEY()
 END_MESSAGE_MAP()
 
 
@@ -48,7 +49,13 @@ BOOL CMainInterface::OnInitDialog()
 
 	// TODO: 在此添加额外的初始化代码
 	m_tabMainInterface.InitTabMainInterface();
-
+	// 注册全局热键（老板键）
+	::RegisterHotKey(
+		this->m_hWnd	// 当前窗口句柄
+		, 1001	// 自定义快捷键标识
+		, MOD_ALT | MOD_SHIFT	// 同时按下 Ctrl, Shift
+		, 0x23	// Ctrl + Shift + end
+	);
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
 
@@ -88,3 +95,16 @@ HCURSOR CMainInterface::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+// 响应热键
+void CMainInterface::OnHotKey(UINT nHotKeyId, UINT nKey1, UINT nKey2)
+{
+	// TODO: 在此添加消息处理程序代码和/或调用默认值
+	if (1001 == nHotKeyId)
+	{
+		BOOL bVisible = IsWindowVisible();//查看消息是显示还是隐藏
+		int nCmdShow = bVisible ? SW_HIDE : SW_SHOW;//?自动判断
+		ShowWindow(nCmdShow);
+	}
+
+	CDialogEx::OnHotKey(nHotKeyId, nKey1, nKey2);
+}

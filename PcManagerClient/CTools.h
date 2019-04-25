@@ -24,7 +24,6 @@ public:
 	// 服务list控件
 	CListCtrl m_listServices;
 
-
 	// ---------------------------- 函数 ----------------------------
 	// 初始化
 	virtual BOOL OnInitDialog();
@@ -32,4 +31,20 @@ public:
 	void InitServicesListCtrl();
 	// 遍历服务
 	void ShowServicesInfo();
+	// 开启权限
+	TOKEN_PRIVILEGES EnablePrivileges(HANDLE hToken, TOKEN_PRIVILEGES tkp);
+	// 关闭权限
+	bool DisablePrivileges(HANDLE hToken, TOKEN_PRIVILEGES tkp);
+	// 锁屏
+	afx_msg void OnClickedBtnLockWnd();
+	// 睡眠
+	afx_msg void OnClickedBtnSleep();
+	// 休眠
+	afx_msg void OnClickedBtnHibernate();
+	// 重启
+	afx_msg void OnClickedBtnReboot();
+	// 注销
+	afx_msg void OnClickedBtnLogoff();
+	// 关机
+	afx_msg void OnClickedBtnShutDown();
 };
