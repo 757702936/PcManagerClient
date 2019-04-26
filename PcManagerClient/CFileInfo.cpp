@@ -14,6 +14,7 @@ IMPLEMENT_DYNAMIC(CFileInfo, CDialogEx)
 
 CFileInfo::CFileInfo(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_FILE_DLG, pParent)
+	, m_radioDisk(FALSE)
 {
 	m_pPeBuff = NULL;
 }
@@ -25,15 +26,33 @@ CFileInfo::~CFileInfo()
 void CFileInfo::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+	DDX_Radio(pDX, IDC_RADIO_C_DISK, m_radioDisk);
+	DDX_Control(pDX, IDC_LIST_FILE_INFO, m_listFileInfo);
 }
 
 
 BEGIN_MESSAGE_MAP(CFileInfo, CDialogEx)
 	ON_BN_CLICKED(IDC_BTN_OPEN_PE_FILE, &CFileInfo::OnClickedBtnOpenPeFile)
+	ON_BN_CLICKED(IDC_BTN_FILE_INFO, &CFileInfo::OnClickedBtnFileInfo)
 END_MESSAGE_MAP()
 
 
 // CFileInfo 消息处理程序
+
+
+// 初始化
+BOOL CFileInfo::OnInitDialog()
+{
+	CDialogEx::OnInitDialog();
+
+	// TODO:  在此添加额外的初始化
+
+	// 初始化list控件
+	InitFileInfoListCtrl();
+
+	return TRUE;  // return TRUE unless you set the focus to a control
+				  // 异常: OCX 属性页应返回 FALSE
+}
 
 // 点击按钮打开PE文件
 void CFileInfo::OnClickedBtnOpenPeFile()
@@ -80,4 +99,103 @@ void CFileInfo::OnClickedBtnOpenPeFile()
 void CFileInfo::SetPeFileContent(char* pBuff, int nSize)
 {
 	memcpy(m_pPeBuff, pBuff, nSize);
+}
+
+// 点击查看文件信息
+void CFileInfo::OnClickedBtnFileInfo()
+{
+	// 清空列表
+	m_listFileInfo.DeleteAllItems();
+	// 遍历文件
+	EnumFiles(GetRadioState());
+}
+
+// 初始化list控件
+void CFileInfo::InitFileInfoListCtrl()
+{
+	// 设置风格
+	m_listFileInfo.SetExtendedStyle(
+		LVS_EX_FULLROWSELECT | LVS_EX_GRIDLINES);
+	// 设置列
+	m_listFileInfo.InsertColumn(
+		0, _T("文件名字"), 0, 150);
+	m_listFileInfo.InsertColumn(
+		1, _T("修改日期"), 0, 150);
+	m_listFileInfo.InsertColumn(
+		2, _T("大小"), 0, 100);
+	m_listFileInfo.InsertColumn(
+		3, _T("路径"), 0, 600);
+}
+
+// 获取单选框状态
+CString CFileInfo::GetRadioState()
+{
+	UpdateData(TRUE);
+	CString strPath;
+	if (m_radioDisk == 0)
+	{
+		strPath = _T("D:\\SourceCode\\vs\\win提高001");
+	}
+	else if (m_radioDisk == 1)
+	{
+		strPath = _T("D:\\SourceCode\\vs\\win提高002");
+	}
+
+	return strPath;
+}
+
+// 遍历磁盘文件
+CString CFileInfo::EnumFiles(CString strPath)
+{
+	CTime fileTime;
+	CFileFind tempFind;
+	CString szFullFileName;
+	TCHAR szTempFile[MAX_PATH] = { 0 };
+	wsprintf(szTempFile, _T("%s\\*.*"), strPath);
+	// 查找文件
+	BOOL bIsFinded = tempFind.FindFile(szTempFile);
+	UINT nIndex = 0; // 列表控件索引
+	while (bIsFinded)
+	{
+		bIsFinded = tempFind.FindNextFile();
+		// 排除两个特殊目录 "."  ".."
+		if (!tempFind.IsDots())
+		{
+			TCHAR szFoundFileName[MAX_PATH] = { 0 };
+			_tcscpy_s(szFoundFileName, tempFind.GetFileName().GetBuffer(MAX_PATH));
+			// 若是目录，则递归
+			if (tempFind.IsDirectory())
+			{
+				// 拼接目录名字
+				TCHAR szTempDir[MAX_PATH] = { 0 };
+				wsprintf(szTempDir, _T("%s\\%s"), strPath, szFoundFileName);
+				EnumFiles(szTempDir); // 递归
+			}
+			else // 是文件
+			{
+				CString strFileSize;
+				strFileSize.Format(_T("%.2f Kb"), tempFind.GetLength() / 1024.0);
+				szFullFileName.Format(_T("%s\\%s"), strPath, szFoundFileName);
+				CString strFileTime;
+				tempFind.GetLastWriteTime(fileTime);
+				strFileTime.Format(
+					_T("%d/%d/%d %d:%d:%d")
+					, fileTime.GetYear(), fileTime.GetMonth(), fileTime.GetDay()
+					, fileTime.GetHour(), fileTime.GetMinute(), fileTime.GetSecond()
+					);
+
+				// 文件名
+				m_listFileInfo.InsertItem(nIndex, szFoundFileName);
+				// 修改日期
+				m_listFileInfo.SetItemText(nIndex, 1, strFileTime);
+				// 大小
+				m_listFileInfo.SetItemText(nIndex, 2, strFileSize);
+				// 路径
+				m_listFileInfo.SetItemText(nIndex, 3, szFullFileName);
+				nIndex++;
+			}
+		}
+	}
+	tempFind.Close();
+	return szFullFileName;
 }

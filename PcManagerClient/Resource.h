@@ -80,6 +80,10 @@
 #define IDC_BTN_SCAN_WHILE_LIST         1052
 #define IDC_BTN_DELETE_WHILE_LIST       1053
 #define IDC_GROUP_WHILE_LIST            1054
+#define IDC_LIST_FILE_INFO              1055
+#define IDC_RADIO_C_DISK                1056
+#define IDC_RADIO_D_DISK                1057
+#define IDC_BTN_FILE_INFO               1058
 #define IDC_EDIT_NT_OPTIONAL_GLOBALPTR_RVA 1077
 #define IDC_EDIT_NT_OPTIONAL_GLOBALPTR_SIZE 1078
 #define IDC_EDIT_NT_OPTIONAL_TLS_RVA    1079
@@ -145,7 +149,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        158
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1055
+#define _APS_NEXT_CONTROL_VALUE         1059
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

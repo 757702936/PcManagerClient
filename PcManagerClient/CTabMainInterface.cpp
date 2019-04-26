@@ -64,7 +64,7 @@ void CTabMainInterface::InitTabMainInterface()
 		, _T("杀毒")
 		, _T("垃圾清理")
 		, _T("进程管理")
-		, _T("文件管理")
+		, _T("文件信息")
 		, _T("软件管理")
 		, _T("小工具")
 	);

@@ -294,7 +294,9 @@ CString CKillVirus::EnumFiles(CString strPath)
 // 把文件内容用MD5加密
 BOOL CKillVirus::MD5Cmp(CString strPath)
 {
+	// CString 转 string
 	std::string strStr(CW2A(strPath.GetString()));
+	// string 转 CString
 	CString strMD5(getFileMD5(strStr).c_str());
 	// 本地查杀
 	for (DWORD i = 0; i < m_vecLocalMD5.size(); ++i)
