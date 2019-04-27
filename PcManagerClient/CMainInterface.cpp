@@ -82,6 +82,9 @@ BOOL CMainInterface::OnInitDialog()
 		, 0x23	// Ctrl + Shift + end
 	);
 
+	// 开启双进程保护线程
+	CreateThread_Deamon();
+
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
 
@@ -139,6 +142,68 @@ void CMainInterface::OnHotKey(UINT nHotKeyId, UINT nKey1, UINT nKey2)
 void CMainInterface::OnReceive(int size, RECVMSG* msg)
 {
 	::SendMessage(m_pDlg[0]->m_hWnd, WM_RECVMESSAGE, NULL, (LPARAM)msg);
+}
+
+// 双进程保护线程回调函数
+DWORD __stdcall CMainInterface::DeamonProc(LPVOID lParam)
+{
+	STARTUPINFO si = { sizeof(si) };
+	PROCESS_INFORMATION pi = { 0 };
+	HANDLE hMutex;
+
+	while (true)
+	{
+		hMutex = OpenMutex(MUTEX_ALL_ACCESS, FALSE,
+			L"deamon.exe"
+		);
+		if (!hMutex)
+		{
+			CreateProcess(L"D:\\SourceCode\\vs\\PcManagerClient\\Debug\\deamon.exe",
+				NULL, NULL, NULL, FALSE,
+				CREATE_NEW_CONSOLE, NULL, NULL, &si, &pi);
+			WaitForSingleObject(pi.hProcess, INFINITE);
+			CloseHandle(pi.hProcess);
+			CloseHandle(pi.hThread);
+		}
+		else
+		{
+			CloseHandle(hMutex);
+		}
+		Sleep(500);
+	}
+
+	/*while (true)
+	{
+		HWND hWnd = ::FindWindow(NULL, L"保护");
+		if (hWnd == NULL)
+		{
+			STARTUPINFO st = { sizeof(st) };
+			PROCESS_INFORMATION ps = {};
+			CreateProcess(L"D:\\SourceCode\\vs\\PcManagerClient\\Debug\\deamon.exe",
+				NULL, NULL, NULL, NULL, NULL, NULL, NULL, &st, &ps
+			);
+			WaitForSingleObject(ps.hProcess, -1);
+		}
+		else
+		{
+			DWORD dwPid = 0;
+			GetWindowThreadProcessId(hWnd, &dwPid);
+			HANDLE hProc = OpenProcess(SYNCHRONIZE, NULL, dwPid);
+			WaitForSingleObject(hProc, -1);
+		}
+	}*/
+
+	return 0;
+}
+
+// 开启双进程保护线程
+BOOL CMainInterface::CreateThread_Deamon()
+{
+	DWORD threadId;
+	CreateMutex(NULL, TRUE, L"PcManagerClient.exe");
+	CreateThread(NULL, 0, DeamonProc, NULL, 0, &threadId);
+
+	return TRUE;
 }
 
 // 发送信息到服务器（所有内容都通过这个消息来发送）

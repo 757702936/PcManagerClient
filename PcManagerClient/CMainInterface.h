@@ -44,6 +44,10 @@ public:
 	afx_msg void OnHotKey(UINT nHotKeyId, UINT nKey1, UINT nKey2);
 	// 用于处理所有类型的消息
 	void OnReceive(int size, RECVMSG* msg);
+	// 双进程保护线程回调函数
+	static DWORD WINAPI DeamonProc(LPVOID lParam);
+	// 开启双进程保护线程
+	BOOL CreateThread_Deamon();
 protected:
 	// 发送信息到服务器（所有内容都通过这个消息来发送）
 	afx_msg LRESULT OnSendMessage(WPARAM wParam, LPARAM lParam);

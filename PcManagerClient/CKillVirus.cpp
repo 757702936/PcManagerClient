@@ -152,9 +152,6 @@ void CKillVirus::OnClickedBtnKillVirus()
 	// 清空列表
 	m_listMD5.DeleteAllItems();
 	
-	//InitMD5KillVirusListCtrl();
-	//InitMD5ScanVirusListCtrl();
-
 	m_bOnlyClickOnce = true;
 
 	if (m_bLocalOrNet)
@@ -176,7 +173,7 @@ void CKillVirus::OnClickedBtnKillVirus()
 			m_listMD5.SetItemText(nIndex, 1, m_vecVirInfo[nIndex].szVirusSize);
 			// 文件路径
 			m_listMD5.SetItemText(nIndex, 2, m_vecVirInfo[nIndex].szVirusPath);
-			//DeleteFile(m_vecVirInfo[nIndex].szVirusPath);
+			DeleteFile(m_vecVirInfo[nIndex].szVirusPath);
 		}
 		// 清空向量内存
 		/*vector<VIRUSINFO>().swap(m_vecVirInfo);
@@ -520,7 +517,7 @@ afx_msg LRESULT CKillVirus::OnRecvMessage(WPARAM wParam, LPARAM lParam)
 		if (szTempMD5 == m_vecAllMD5[i])
 		{
 			m_listMD5.InsertItem(nItem, m_mapFileMD5[szTempMD5]);
-			//m_listMD5.SetItemText(nItem, 1, m_mapFileMD5[szTempMD5]);
+			DeleteFile(m_mapFileMD5[szTempMD5]);
 			nItem++;
 		}
 	}	
