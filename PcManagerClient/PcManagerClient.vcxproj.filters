@@ -40,13 +40,13 @@
     <Filter Include="MD5">
       <UniqueIdentifier>{f919849f-e5e2-4bf0-8a2c-9f893dbae5cf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="杀毒\网络">
+      <UniqueIdentifier>{f935a67f-a400-4ce9-a394-4fba3d660b16}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCleaner.h">
       <Filter>垃圾清理</Filter>
-    </ClInclude>
-    <ClInclude Include="CFileInfo.h">
-      <Filter>文件信息</Filter>
     </ClInclude>
     <ClInclude Include="CKillVirus.h">
       <Filter>杀毒</Filter>
@@ -123,6 +123,12 @@
     <ClInclude Include="md5global.h">
       <Filter>MD5</Filter>
     </ClInclude>
+    <ClInclude Include="CClientSocket.h">
+      <Filter>杀毒\网络</Filter>
+    </ClInclude>
+    <ClInclude Include="CFileInfo.h">
+      <Filter>文件信息\文件详细信息</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PcManagerClient.cpp">
@@ -133,9 +139,6 @@
     </ClCompile>
     <ClCompile Include="CTabMainInterface.cpp">
       <Filter>主界面</Filter>
-    </ClCompile>
-    <ClCompile Include="CFileInfo.cpp">
-      <Filter>文件信息</Filter>
     </ClCompile>
     <ClCompile Include="CCleaner.cpp">
       <Filter>垃圾清理</Filter>
@@ -190,6 +193,12 @@
     </ClCompile>
     <ClCompile Include="md5.cpp">
       <Filter>MD5</Filter>
+    </ClCompile>
+    <ClCompile Include="CClientSocket.cpp">
+      <Filter>杀毒\网络</Filter>
+    </ClCompile>
+    <ClCompile Include="CFileInfo.cpp">
+      <Filter>文件信息\文件详细信息</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -44,23 +44,18 @@
 #define IDC_EDIT_OPTIONAL_NumberOfRvaAndSizes 1019
 #define IDC_BTN_OPEN_SECTIONS           1020
 #define IDC_LIST_SECTION_INFO           1021
-#define IDC_EDIT_CPU_USAGE              1021
 #define IDC_BTN_OPEN_DATA_DIRECTORY     1022
-#define IDC_EDIT_MEMORY_USAGE           1022
 #define IDC_EDIT_NT_OPTIONAL_EXPORT_RVA 1023
-#define IDC_EDIT_MEMORY_CLEAR           1023
 #define IDC_EDIT_NT_OPTIONAL_EXPORT_SIZE 1024
 #define IDC_EDIT_NT_OPTIONAL_IMPORT_RVA 1025
 #define IDC_EDIT_NT_OPTIONAL_IMPORT_SIZE 1026
 #define IDC_EDIT_NT_OPTIONAL_RESOURCE_RVA 1027
 #define IDC_EDIT_NT_OPTIONAL_RESOURCE_SIZE 1028
-#define IDC_LIST_CLEAR_RUBBISH_STATE    1028
 #define IDC_EDIT_NT_OPTIONAL_EXCEPTION_RVA 1029
 #define IDC_EDIT_NT_OPTIONAL_EXCEPTION_SIZE 1030
 #define IDC_BTN_NT_OPTIONAL_EXPORT      1031
 #define IDC_EDIT_TLS_STARTAS            1032
 #define IDC_EDIT_TLS_ENDAS              1033
-#define IDC_EDIT_TLS_CALLBACKAS         1034
 #define IDC_LIST_RELOC_INFO             1034
 #define IDC_LIST_RELOC_DATA             1035
 #define IDC_LIST_DELAY_INFO             1037
@@ -84,6 +79,9 @@
 #define IDC_RADIO_C_DISK                1056
 #define IDC_RADIO_D_DISK                1057
 #define IDC_BTN_FILE_INFO               1058
+#define IDC_LIST_SOFT_INFO              1061
+#define IDC_BTN_SOFTINFO                1062
+#define IDC_BTN_SOFT_UNINSTALL          1063
 #define IDC_EDIT_NT_OPTIONAL_GLOBALPTR_RVA 1077
 #define IDC_EDIT_NT_OPTIONAL_GLOBALPTR_SIZE 1078
 #define IDC_EDIT_NT_OPTIONAL_TLS_RVA    1079
@@ -142,6 +140,11 @@
 #define IDC_BTN_SCAN_VIRUS              1132
 #define IDC_BTN_KILL_VIRUS              1133
 #define IDC_GROUP_MD5                   1134
+#define IDC_EDIT_MEMORY_USAGE           1135
+#define IDC_EDIT_MEMORY_CLEAR           1136
+#define IDC_EDIT_CPU_USAGE              1137
+#define IDC_EDIT_TLS_CALLBACKAS         1138
+#define IDC_LIST_CLEAR_RUBBISH_STATE    1139
 
 // Next default values for new objects
 // 
@@ -149,7 +152,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        158
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1059
+#define _APS_NEXT_CONTROL_VALUE         1064
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

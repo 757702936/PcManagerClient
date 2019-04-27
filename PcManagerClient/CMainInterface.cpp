@@ -8,19 +8,43 @@
 #include "CMainInterface.h"
 #include "afxdialogex.h"
 
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
 
+#include <vector>
+using std::vector;
+
+// 保存对话框指针
+extern vector<CDialogEx*> m_pDlg;
 
 // CMainInterface 对话框
 
-
+// 端口号
+#define PORT 22222
+// IP地址 127.0.0.1
+const char* address = "127.0.0.1";
 
 CMainInterface::CMainInterface(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_MAIN_INTERFACE_DLG, pParent)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
+	
+	// 连接服务端
+	sockaddr_in addr = { 0 };
+	addr.sin_family = AF_INET;
+	addr.sin_port = htons(PORT);
+	addr.sin_addr.S_un.S_addr = inet_addr(address);
+	m_socket.Connect((SOCKADDR*)& addr, htons(PORT));
+	// 判断连接服务器是否成功
+	if (GetLastError() != 0)
+	{
+		MessageBox(_T("服务器已断开！"),
+			_T("错误"), MB_ICONERROR);
+		// 关闭套接字
+		m_socket.Close();
+	}
 }
 
 void CMainInterface::DoDataExchange(CDataExchange* pDX)
@@ -33,6 +57,7 @@ BEGIN_MESSAGE_MAP(CMainInterface, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	ON_WM_HOTKEY()
+	ON_MESSAGE(WM_SENDMESSAGE, &CMainInterface::OnSendMessage)
 END_MESSAGE_MAP()
 
 
@@ -56,6 +81,7 @@ BOOL CMainInterface::OnInitDialog()
 		, MOD_ALT | MOD_SHIFT	// 同时按下 Ctrl, Shift
 		, 0x23	// Ctrl + Shift + end
 	);
+
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
 
@@ -107,4 +133,16 @@ void CMainInterface::OnHotKey(UINT nHotKeyId, UINT nKey1, UINT nKey2)
 	}
 
 	CDialogEx::OnHotKey(nHotKeyId, nKey1, nKey2);
+}
+
+// 用于处理所有类型的消息
+void CMainInterface::OnReceive(int size, RECVMSG* msg)
+{
+	::SendMessage(m_pDlg[0]->m_hWnd, WM_RECVMESSAGE, NULL, (LPARAM)msg);
+}
+
+// 发送信息到服务器（所有内容都通过这个消息来发送）
+afx_msg LRESULT CMainInterface::OnSendMessage(WPARAM wParam, LPARAM lParam)
+{
+	return m_socket.Send((PVOID)lParam, sizeof(SENDMSG));
 }

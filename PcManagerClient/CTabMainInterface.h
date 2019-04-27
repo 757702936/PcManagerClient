@@ -1,8 +1,5 @@
 #pragma once
 
-#include <vector>
-using std::vector;
-
 // CTabMainInterface
 
 class CTabMainInterface : public CTabCtrl
@@ -14,8 +11,7 @@ public:
 	virtual ~CTabMainInterface();
 
 protected:
-	// 保存对话框指针
-	vector<CDialogEx*> m_pDlg;
+	
 
 	DECLARE_MESSAGE_MAP()
 public:

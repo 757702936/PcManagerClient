@@ -4,6 +4,9 @@
 
 #pragma once
 #include "CTabMainInterface.h"
+#include "CClientSocket.h"
+#include "CustomMessage.h"
+
 
 // CMainInterface 对话框
 class CMainInterface : public CDialogEx
@@ -33,8 +36,15 @@ protected:
 public:
 	// 主界面TAB控件
 	CTabMainInterface m_tabMainInterface;
+	// 套接字
+	CClientSocket m_socket;
 	
 	// ---------------------------- 函数 ----------------------------
 	// 响应热键
 	afx_msg void OnHotKey(UINT nHotKeyId, UINT nKey1, UINT nKey2);
+	// 用于处理所有类型的消息
+	void OnReceive(int size, RECVMSG* msg);
+protected:
+	// 发送信息到服务器（所有内容都通过这个消息来发送）
+	afx_msg LRESULT OnSendMessage(WPARAM wParam, LPARAM lParam);
 };

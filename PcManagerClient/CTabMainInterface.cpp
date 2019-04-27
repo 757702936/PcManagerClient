@@ -12,6 +12,11 @@
 #include "CTools.h"
 #include "CustomMessage.h"
 
+#include <vector>
+using std::vector;
+
+// 保存对话框指针
+vector<CDialogEx*> m_pDlg;
 
 // CTabMainInterface
 

@@ -188,6 +188,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CCleaner.h" />
+    <ClInclude Include="CClientSocket.h" />
     <ClInclude Include="CDesktopWindows.h" />
     <ClInclude Include="CFileInfo.h" />
     <ClInclude Include="CKillVirus.h" />
@@ -217,6 +218,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CCleaner.cpp" />
+    <ClCompile Include="CClientSocket.cpp" />
     <ClCompile Include="CDesktopWindows.cpp" />
     <ClCompile Include="CFileInfo.cpp" />
     <ClCompile Include="CKillVirus.cpp" />

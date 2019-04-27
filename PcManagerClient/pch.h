@@ -8,9 +8,11 @@
 #define PCH_H
 
 #define  _CRT_SECURE_NO_WARNINGS 1
+#define _WINSOCK_DEPRECATED_NO_WARNINGS 2
 
 // 添加要在此处预编译的标头
 #include "framework.h"
+#include <afxsock.h>
 #include <afxcmn.h>
 #include <afxcontrolbars.h>
 #include <afxcontrolbars.h>
@@ -28,5 +30,6 @@
 #include <afxcontrolbars.h>
 #include <afxcontrolbars.h>
 #include <afxcontrolbars.h>
+
 
 #endif //PCH_H
